@@ -32,6 +32,8 @@ const app = express();
 const port = 3000;
 const hostname = "127.0.0.1";
 
+app.use(express.static("public"));
+
 app.get("/", (req, res) => {
 	res.sendFile(path.resolve(__dirname, "index.html"));
 });
@@ -42,11 +44,15 @@ app.get("/contact", (req, res) => {
 	res.sendFile(path.resolve(__dirname, "contact.html"));
 });
 
+app.get("/test", (req, res) => {
+	res.sendFile(path.resolve(__dirname, "contact.html"));
+});
+/*
 app.get("/users/:userID/movies/:moviesID", (req, res) => {
 	res.send(`<h1>   user name : ${req.params.userID} </h1>
     <h1> movies name: ${req.params.moviesID}</h1>`);
 });
-
+*/
 app.listen(port, hostname, () => {
 	console.log(`Example app listening on port http://${hostname}:${port} `);
 });
