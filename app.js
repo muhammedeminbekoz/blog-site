@@ -1,17 +1,20 @@
 //const path = require("path");
 //const express = require("express");
-import path from "path";
-import express from "express";
-import { engine } from "express-handlebars";
-const app = express();
-const port = 3000;
-const hostname = "127.0.0.1";
 
+const express = require("express");
+const exphbs = require("express-handlebars");
+const mongoose = require("mongoose");
+const app = express();
+require("dotenv").config();
+const port = process.env.PORT || 3000;
+
+const handlebars = exphbs.create({});
+
+mongoose.connect(`mongodb://${process.env.HOSTNAME}/${process.env.DATABASE_NAME}`);
 app.use(express.static("public"));
 
-app.engine("handlebars", engine());
+app.engine("handlebars", handlebars.engine);
 app.set("view engine", "handlebars");
-app.set("views", "./views");
 
 app.get("/", (req, res) => {
 	res.render("site/index");
@@ -35,6 +38,6 @@ app.get("/register", (req, res) => {
 	res.render("site/register");
 });
 
-app.listen(port, hostname, () => {
-	console.log(`Example app listening on port http://${hostname}:${port} `);
+app.listen(port, process.env.HOSTNAME, () => {
+	console.log(`Example app listening on port http://${process.env.HOSTNAME}:${port} `);
 });
