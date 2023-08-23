@@ -49,18 +49,10 @@ Post.find({
 });
 */
 /*
-
-
-Post.create(
-	{
-		title: "Anderson",
-		content: "Talisca",
-	},
-	{
-		title: "sezen aksu",
-		content: "zalim",
-	}
-)
+Post.create({
+	title: "anderson",
+	content: "talisca",
+})
 	.then((results) => {
 		console.log(results);
 	})
