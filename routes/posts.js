@@ -12,7 +12,12 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/test", (req, res) => {
-	Post.create(req.body);
+	let post_image = req.files.post_image;
+	post_image.mv(`..public/img/images/${post_image.name}`);
+	Post.create({
+		...req.body,
+		post_image: `/public/img/post_images/${post_image.name}`,
+	});
 	res.redirect("/");
 });
 module.exports = router;

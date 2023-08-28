@@ -6,8 +6,11 @@ const app = express();
 require("dotenv").config();
 const port = process.env.PORT || 3000;
 const handlebars = exphbs.create({});
+const fileUpload = require("express-fileupload");
 
 mongoose.connect(`mongodb://${process.env.HOSTNAME}/${process.env.DATABASE_NAME}`);
+
+app.use(fileUpload());
 
 app.use(express.static("public"));
 
