@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
-const Post = require("./models/post");
+const Post = require("./models/Post");
 
-mongoose.connect("mongodb://127.0.0.1/nodeblog_test_db");
+mongoose.connect("mongodb://127.0.0.1/nodeblog_db");
+Post.findById("64e8bf41879426a54a369397").then((res) => {
+	console.log(res);
+});
 /*
 Post.find({})
 	.then((post) => {
@@ -12,6 +15,7 @@ Post.find({})
 	});
 */
 /*
+
 Post.findById("64e5ea1776b514727e6f6797")
 	.then((result) => {
 		console.log(result);
@@ -41,13 +45,9 @@ Post.findByIdAndUpdate("64e5e61b6f5c925c827c0828", {
 		console.log(err);
 	});
 */
-/*
-Post.find({
-	content: "zalim",
-}).then((result) => {
+Post.find({}).then((result) => {
 	console.log(result);
 });
-*/
 /*
 Post.create({
 	title: "anderson",

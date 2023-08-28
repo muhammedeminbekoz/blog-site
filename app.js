@@ -9,9 +9,10 @@ const handlebars = exphbs.create({});
 
 mongoose.connect(`mongodb://${process.env.HOSTNAME}/${process.env.DATABASE_NAME}`);
 
+app.use(express.static("public"));
+
 app.engine("handlebars", handlebars.engine);
 app.set("view engine", "handlebars");
-app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
