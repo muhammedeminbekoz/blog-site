@@ -16,22 +16,26 @@
 					{{#each posts}}
 						<div class="col-md-6">
 							<div class="blog">
-								<div class="blog-img">
-									<img src="img/blog1.jpg" class="img-fluid" />
-								</div>
+								{{#each this}}
+									<div class="blog-img">
+										<img src="{{post_image}}" class="img-fluid" />
+									</div>
+								{{/each}}
 								<div class="blog-content">
 									<ul class="blog-meta">
 										<li><i class="fas fa-users"></i><span class="writer">Muhammed Emin Beköz</span></li>
-										<li><i class="fas fa-clock"></i><span class="writer">17 Dec 2018</span></li>
+										<li><i class="fas fa-clock"></i><span class="writer">{{generateDate date 'DD MMM YYYY'}} </span></li> 
 										<li><i class="fas fa-comments"></i><span class="writer">13</span></li>
 									</ul>
 									{{#each this}}
 										<h3>{{title}} </h3>
 										<p>{{content}} </p>
 									{{/each}}
-									<a href="/posts/ ">{{_id}}Read More</a>
+									<a href="/posts/{{#each this}}{{ _id}}{{/each}}">Read More</a>
+
 								</div>
 							</div>
+
 						</div>
 					{{/each}}
 					<nav aria-label="Page navigation example">
