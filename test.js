@@ -1,11 +1,20 @@
 const mongoose = require("mongoose");
 const Post = require("./models/Post");
-
-mongoose.connect("mongodb://127.0.0.1/nodeblog_db");
-Post.findById("64e8bf41879426a54a369397").then((res) => {
-	console.log(res);
+const User = require("./models/User");
+User.create({
+	username: "Muhammed",
+	email: "eminbekoz6164@gmail.com",
+	password: "123456789",
+}).then((results) => {
+	console.log(results);
 });
+
 /*
+
+
+
+
+
 Post.find({})
 	.then((post) => {
 		console.log(post);
