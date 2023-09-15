@@ -22,11 +22,13 @@
 									</div>
 								{{/each}}
 								<div class="blog-content">
+								
 									<ul class="blog-meta">
 										<li><i class="fas fa-users"></i><span class="writer">Muhammed Emin Beköz</span></li>
-										<li><i class="fas fa-clock"></i><span class="writer">{{generateDate date 'DD MMM YYYY'}} </span></li> 
+										<li><i class="fas fa-clock"></i><span class="writer">{{#each this}}  {{date}} {{/each}}   </span></li> 
 										<li><i class="fas fa-comments"></i><span class="writer">13</span></li>
 									</ul>
+									 
 									{{#each this}}
 										<h3>{{title}} </h3>
 										<p>{{content}} </p>
