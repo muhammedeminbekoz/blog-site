@@ -7,6 +7,7 @@ require("dotenv").config();
 const port = process.env.PORT || 3000;
 const fileUpload = require("express-fileupload");
 const moment = require("moment");
+const expressSession = require("express-session");
 const handlebars = exphbs.create({
 	helpers: {
 		generateDate: (date, format) => moment(date).format(format),
