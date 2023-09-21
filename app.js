@@ -56,10 +56,11 @@ const main = require("./routes/main");
 const posts = require("./routes/posts");
 const users = require("./routes/users");
 const session = require("express-session");
+const admin = require("./routes/admin/index");
 app.use("/", main);
 app.use("/posts", posts);
 app.use("/users", users);
-
+app.use("/admin", admin);
 app.listen(port, process.env.HOSTNAME, () => {
 	console.log(`Example app listening on port http://${process.env.HOSTNAME}:${port} `);
 });
