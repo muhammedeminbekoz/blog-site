@@ -9,7 +9,7 @@ router.get("/register", (req, res) => {
 router.post("/register", (req, res) => {
 	User.create(req.body).then(() => {
 		console.log(req.body.username);
-		res.redirect("/login");
+		res.redirect("/users/login");
 	});
 });
 
@@ -24,6 +24,7 @@ router.post("/login", (req, res) => {
 		.then((user) => {
 			if (user) {
 				if (user.password == password) {
+					req.session.userId = user._id;
 					res.redirect("/");
 				} else {
 					res.redirect("/users/login");
@@ -35,8 +36,14 @@ router.post("/login", (req, res) => {
 			}
 		})
 		.catch((err) => {
-			console.log("hata");
+			console.log("Eroor !!!");
 		});
+});
+
+router.get("/logout", (req, res) => {
+	req.session.destroy(() => {
+		res.redirect("/");
+	});
 });
 
 module.exports = router;

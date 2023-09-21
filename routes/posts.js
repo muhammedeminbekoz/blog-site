@@ -4,7 +4,10 @@ const Post = require("../models/Post");
 const path = require("path");
 
 router.get("/new", (req, res) => {
-	res.render("site/addpost");
+	if (req.session.userId) {
+		return res.render("site/addpost");
+	}
+	res.redirect("/users/login");
 });
 router.get("/:id", (req, res) => {
 	Post.findById(req.params.id).then((post) => {
@@ -23,7 +26,7 @@ router.post("/test", (req, res) => {
 	});
 
 	console.log(req.files.post_image.name);
-	res.redirect("/");
+	res.redirect("/blog");
 });
 
 module.exports = router;

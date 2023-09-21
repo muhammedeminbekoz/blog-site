@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const Post = require("../models/Post");
+const session = require("express-session");
 
 router.get("/", (req, res) => {
+	console.log(req.session);
 	res.render("site/index");
 });
 router.get("/about", (req, res) => {
