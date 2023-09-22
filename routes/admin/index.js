@@ -12,8 +12,15 @@ router.get("/categories", (req, res) => {
 });
 
 router.post("/categories", (req, res) => {
-	Category.create(req.body);
-	res.render("categories");
+	Category.create(req.body).then(() => {
+		res.redirect("/admin/categories");
+	});
+});
+
+router.delete("/categories/:id", (req, res) => {
+	Category.findOneAndRemove({ _id: req.params.id }).then(() => {
+		res.redirect("/admin/categories");
+	});
 });
 
 module.exports = router;

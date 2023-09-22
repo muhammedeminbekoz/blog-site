@@ -56,7 +56,12 @@
              <tr>
 				<td>{{#each this}} {{_id}} {{/each}} </td>
 				<td>{{#each this}} {{name}} {{/each}} </td>
-				<td>DELETE</td>
+				<td>
+					<form action="/admin/categories/{{#each this}}{{_id}}{{/each}}?_method=DELETE  " method="POST">
+						<input type="hidden" name="_method" value="DELETE">
+						<button type="submit" class="btn btn-danger">DELETE</button>
+					</form>
+				</td>
 			 </tr>
 			 
 	   {{/each}}

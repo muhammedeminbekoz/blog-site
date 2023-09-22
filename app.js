@@ -9,6 +9,7 @@ const fileUpload = require("express-fileupload");
 const moment = require("moment");
 const expressSession = require("express-session");
 const MongoStore = require("connect-mongo");
+const methodOverride = require("method-override");
 const handlebars = exphbs.create({
 	helpers: {
 		generateDate: (date, format) => moment(date).format(format),
@@ -19,6 +20,7 @@ mongoose.connect(`mongodb://${process.env.HOSTNAME}/${process.env.DATABASE_NAME}
 
 app.use(fileUpload());
 app.use(express.static("public"));
+app.use(methodOverride("_method"));
 app.use(
 	expressSession({
 		secret: "test",
