@@ -6,9 +6,11 @@ router.get("/", (req, res) => {
 	res.render("admin/index");
 });
 router.get("/categories", (req, res) => {
-	Category.find({}).then((categories) => {
-		res.render("admin/categories", { categories: categories });
-	});
+	Category.find({})
+		.sort({ $natural: -1 })
+		.then((categories) => {
+			res.render("admin/categories", { categories: categories });
+		});
 });
 
 router.post("/categories", (req, res) => {
