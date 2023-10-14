@@ -1,0 +1,2 @@
+login olduktan sonra login ve register linkleri kaybolmuyor 
+posts tablosunda category_name boş geliyor

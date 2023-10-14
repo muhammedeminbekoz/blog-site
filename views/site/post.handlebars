@@ -20,7 +20,7 @@
 						</div>
 						<div class="blog-content">
 							<ul class="blog-meta">
-								<li><i class="fas fa-user"></i>John Doe</li>
+								<li><i class="fas fa-user"></i>{{#each post}} {{#each author}} {{username}} {{/each}} {{/each}} </li>
 								<li><i class="fas fa-clock"></i> {{#each post}}{{generateDate date 'DD MMM YYYY'}} {{/each}} </li>
 								<li><i class="fas fa-comments"></i>57</li>
 							</ul>
@@ -72,16 +72,7 @@
 				<!-- /Search -->
 
 				<!-- Category -->
-				<div class="widget">
-					<h3 class="mb-3">Category</h3>
-					<div class="widget-category">
-						<a href="#">Web Design<span>(7)</span></a>
-						<a href="#">Marketing<span>(142)</span></a>
-						<a href="#">Web Development<span>(74)</span></a>
-						<a href="#">Branding<span>(60)</span></a>
-						<a href="#">Photography<span>(5)</span></a>
-					</div>
-				</div>
+				{{> site-sidebar}}
 				<!-- /Category -->
 
 				<!-- Posts sidebar -->
@@ -89,40 +80,17 @@
 					<h3 class="mb-3">Latest Posts</h3>
 
 					<!-- single post -->
+				{{#each posts}}
 					<div class="widget-post">
-						<a href="#">
-							<img class="img-fluid" src="./img/post1.jpg" alt="" />
-							Lorem Ipsum
-						</a>
+						<a href="/posts/{{#each this}}{{ _id}}{{/each}}"><img class="img-fluid" src="{{#each this}} {{post_image}} {{/each}}"/>  {{#each this}} {{title}} {{/each}} </a>
 						<ul class="blog-meta">
 							<li>Oct 18, 2017</li>
 						</ul>
 					</div>
+					{{/each}}
 					<!-- /single post -->
 
-					<!-- single post -->
-					<div class="widget-post">
-						<a href="#">
-							<img class="img-fluid" src="./img/post2.jpg" alt="" />
-							Lorem Ipsum
-						</a>
-						<ul class="blog-meta">
-							<li>Oct 18, 2017</li>
-						</ul>
-					</div>
-					<!-- /single post -->
-
-					<!-- single post -->
-					<div class="widget-post">
-						<a href="#">
-							<img class="img-fluid" src="./img/post3.jpg" alt="" />
-							Lorem Ipsum
-						</a>
-						<ul class="blog-meta">
-							<li>Oct 18, 2017</li>
-						</ul>
-					</div>
-					<!-- /single post -->
+					
 
 				</div>
 				<!-- /Posts sidebar -->
