@@ -23,4 +23,8 @@ router.get("/contact", (req, res) => {
 	res.render("site/contact");
 });
 
+router.post("/main/contact", (req, res) => {
+	res.redirect("/");
+});
+
 module.exports = router;

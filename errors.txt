@@ -1,2 +1,23 @@
 login olduktan sonra login ve register linkleri kaybolmuyor 
 posts tablosunda category_name boş geliyor
+
+
+
+
+.aggregate([
+				{
+					$lookup: {
+						from: "posts",
+						localField: "_id",
+						foreignField: "category",
+						as: "posts",
+					},
+				},
+				{
+					$project: {
+						_id: 1,
+						_name: 1,
+						num_of_posts: { $size: "$posts" },
+					},
+				},
+			])

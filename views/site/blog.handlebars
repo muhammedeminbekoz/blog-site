@@ -58,37 +58,16 @@
 				</div>
 			</main>
 
-			<aside id="aside" class="col-md-4">
-				<div class="widget">
-					<div class="widget-search">
-						<input class="search-input form-control" type="text" placeholder="Search" />
-						<button class="search-btn" type="button"><i class="fas fa-search"></i></button>
-					</div>
-				</div>
-				<!-- /Search -->
+			
+				
 
 				<!-- Category -->
 				
 					{{> site-sidebar}}
 
 			    <!-- /Category -->
-				<!-- Posts sidebar -->
-				<div class="widget">
-					<h3 class="mb-3">Latest Posts</h3>
 
-					<!-- single post -->
-					{{#each posts}}
-					<div class="widget-post">
-						<a href="/posts/{{#each this}}{{ _id}}{{/each}}"><img class="img-fluid" src="{{#each this}} {{post_image}} {{/each}}"/>  {{#each this}} {{title}} {{/each}} </a>
-						<ul class="blog-meta">
-							<li>Oct 18, 2017</li>
-						</ul>
-					</div>
-					{{/each}}
-					<!-- /single post -->
-				</div>
-				<!-- /Posts sidebar -->
-			</aside>
+			
 		</div>
 	</div>
 </section>

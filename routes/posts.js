@@ -14,11 +14,13 @@ router.get("/:id", (req, res) => {
 	Post.findById({ _id: req.params.id })
 		.populate({ path: "author", model: User })
 		.then((post) => {
-			Post.find({}).then((posts) => {
-				Category.find({}).then((categories) => {
-					res.render("site/post", { post: post, posts: posts, categories: categories });
+			Post.find({})
+				.sort({ $natural: -1 })
+				.then((posts) => {
+					Category.find({}).then((categories) => {
+						res.render("site/post", { post: post, posts: posts, categories: categories });
+					});
 				});
-			});
 		});
 });
 
